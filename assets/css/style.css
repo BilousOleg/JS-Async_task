@@ -1,0 +1,20 @@
+html {
+  font-size: 16px;
+  font-family: sans-serif;
+}
+
+body {
+  height: 100vh;
+}
+
+.products-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 220px);
+  grid-auto-rows: 280px;
+  gap: 0.625rem;
+  padding: 1.25rem;
+}
+
+.products-list > li {
+  display: flex;
+}
