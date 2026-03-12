@@ -1,6 +1,5 @@
 function generateProductCards(products) {
   products.forEach((p) => {
-    console.log(p);
     render(createProductCard(p));
   });
 }
