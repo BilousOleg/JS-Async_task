@@ -17,43 +17,64 @@ function createProductCard({
   price,
   rating: { rate },
 }) {
-  const productCardEl = document.createElement('article');
-  productCardEl.classList.add('product-card');
+  const productImageEl = createElement('img', {
+    attributes: {
+      src: imageSrc,
+      alt: title,
+    },
+  });
 
-  const productImageContainerEl = document.createElement('div');
-  productImageContainerEl.classList.add('product-image-container');
+  const productImageContainerEl = createElement(
+    'div',
+    {
+      classNames: ['product-image-container'],
+    },
+    productImageEl
+  );
 
-  const productImageEl = document.createElement('img');
-  productImageEl.src = imageSrc;
-  productImageEl.alt = title;
+  const productTitleEl = createElement(
+    'div',
+    { classNames: ['product-title'] },
+    title
+  );
 
-  productImageContainerEl.append(productImageEl);
+  const productPriceEl = createElement(
+    'div',
+    { classNames: ['product-price'] },
+    `${price} $`
+  );
 
-  const productTitleEl = document.createElement('div');
-  productTitleEl.classList.add('product-title');
-  productTitleEl.textContent = title;
+  const ratingValueEl = createElement('span', {}, rate);
 
-  const productInfoEl = document.createElement('div');
-  productInfoEl.classList.add('product-info');
+  const ratingIconEl = createElement('i', {
+    classNames: ['fa-solid', 'fa-star'],
+  });
 
-  const productPriceEl = document.createElement('div');
-  productPriceEl.classList.add('product-price');
-  productPriceEl.textContent = `${price} $`;
+  const productRatingEl = createElement(
+    'div',
+    {
+      classNames: ['product-rating'],
+    },
+    ratingValueEl,
+    ratingIconEl
+  );
 
-  const productRatingEl = document.createElement('div');
-  productRatingEl.classList.add('product-rating');
+  const productInfoEl = createElement(
+    'div',
+    { classNames: ['product-info'] },
+    productPriceEl,
+    productRatingEl
+  );
 
-  const ratingValueEl = document.createElement('span');
-  ratingValueEl.textContent = rate;
-
-  const ratingIconEl = document.createElement('i');
-  ratingIconEl.classList.add('fa-solid', 'fa-star');
-
-  productRatingEl.append(ratingValueEl, ratingIconEl);
-
-  productInfoEl.append(productPriceEl, productRatingEl);
-
-  productCardEl.append(productImageContainerEl, productTitleEl, productInfoEl);
+  const productCardEl = createElement(
+    'article',
+    {
+      classNames: ['product-card'],
+    },
+    productImageContainerEl,
+    productTitleEl,
+    productInfoEl
+  );
 
   return productCardEl;
 }
