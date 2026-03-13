@@ -5,9 +5,8 @@ function generateProductCards(products) {
 }
 
 function render(productCardEl) {
-  const listItemEl = document.createElement('li');
+  const listItemEl = createElement('li', {}, productCardEl);
 
-  listItemEl.append(productCardEl);
   listElement.append(listItemEl);
 }
 
